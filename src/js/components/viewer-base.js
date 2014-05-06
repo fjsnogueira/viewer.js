@@ -330,7 +330,14 @@ Crocodoc.addComponent('viewer-base', function (scope) {
      */
     function handleLinkClick(data) {
         if (data.uri) {
-            window.open(data.uri);
+            // no version of IE supports opening data:url windows
+            if (browser.ie) {
+                window.open(data.uri);
+            } else {
+                var proxy = '<html><meta http-equiv="refresh" content="0; url=' + data.uri + '"></html>';
+                // open in a data:url so the referrer is stripped
+                window.open('data:text/html,' + encodeURIComponent(proxy));
+            }
         } else if (data.destination) {
             api.scrollTo(data.destination.pagenum);
         }
