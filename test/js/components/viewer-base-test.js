@@ -302,13 +302,13 @@ test('setLayout() should broadcast a layoutchange message when called and the la
     this.component.setLayout(Crocodoc.LAYOUT_VERTICAL);
 });
 
-test('onmessage() should call fire() when called with all subscribed messages except scroll, afterscroll, and linkclicked', function () {
+test('onmessage() should call fire() when called with all subscribed messages except scroll, afterscroll, and linkclick', function () {
     this.component.init($('<div>'), { });
     var spy = this.spy(this.viewerAPI, 'fire');
     for (var i = 0; i < this.component.messages.length; ++i) {
         var m = this.component.messages[i];
         this.component.onmessage(m, {});
-        if (m === 'scroll' || m === 'afterscroll' || m === 'linkclicked') {
+        if (m === 'scroll' || m === 'afterscroll' || m === 'linkclick') {
             ok(spy.neverCalledWith(m), 'fire was not called with '+m);
         } else {
             ok(spy.calledWith(m), 'fire was called with '+m);

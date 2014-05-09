@@ -324,11 +324,11 @@ Crocodoc.addComponent('viewer-base', function (scope) {
     }
 
     /**
-     * Handler for linkclicked messages
+     * Handler for linkclick messages
      * @returns {void}
      * @private
      */
-    function handleLinkClicked(data) {
+    function handleLinkClick(data) {
         if (data.uri) {
             window.open(data.uri);
         } else if (data.destination) {
@@ -466,7 +466,7 @@ Crocodoc.addComponent('viewer-base', function (scope) {
             'dragend',
             'dragstart',
             'fail',
-            'linkclicked',
+            'linkclick',
             'pagefail',
             'pagefocus',
             'pageload',
@@ -486,8 +486,8 @@ Crocodoc.addComponent('viewer-base', function (scope) {
          */
         onmessage: function (name, data) {
             switch (name) {
-                case 'linkclicked':
-                    handleLinkClicked(data);
+                case 'linkclick':
+                    handleLinkClick(data);
                     break;
 
                 case 'zoom':

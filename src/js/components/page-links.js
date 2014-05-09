@@ -53,17 +53,17 @@ Crocodoc.addComponent('page-links', function (scope) {
 
     /**
      * Handle link clicks
-     * @param   {Event} ev The event object
+     * @param   {Event} event The event object
      * @returns {void}
      * @private
      */
-    function handleClick(ev) {
-        var $link = $(ev.target),
+    function handleClick(event) {
+        var $link = $(event.target),
             data = $link.data('link');
         if (data) {
-            scope.broadcast('linkclicked', data);
+            scope.broadcast('linkclick', data);
         }
-        ev.preventDefault();
+        event.preventDefault();
     }
 
     //--------------------------------------------------------------------------
